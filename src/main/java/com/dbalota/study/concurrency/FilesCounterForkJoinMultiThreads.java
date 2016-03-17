@@ -24,7 +24,7 @@ public class FilesCounterForkJoinMultiThreads extends RecursiveAction implements
     }
 
     public void searchFiles() {
-        ForkJoinPool p = new ForkJoinPool(4);
+        ForkJoinPool p = new ForkJoinPool(7);
         p.invoke(this);
     }
 

@@ -18,7 +18,7 @@ public class Main {
 
         System.out.println("\n=================== SINGLE THREAD ==========================");
         FilesCounter fc = new FilesCounterSingleTread(root);
-        //execute(fc);
+        execute(fc);
 
         System.out.println("\n=================== MULTI THREADS FORK-JOIN==========================");
         fc = new FilesCounterForkJoinMultiThreads(root);
