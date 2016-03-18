@@ -24,6 +24,10 @@ public class Main {
         fc = new FilesCounterForkJoinMultiThreads(root);
         execute(fc);
 
+        System.out.println("\n=================== MULTI THREADS FORK-JOIN 2 ==========================");
+        fc = new FilesCounterForkJoinMultiThreadsNew(root);
+        execute(fc);
+
         System.out.println("\n=================== MULTI  THREADS EXECUTORS==========================");
         fc = new FilesCounterExecutorsMultiThreads(root);
         execute(fc);
