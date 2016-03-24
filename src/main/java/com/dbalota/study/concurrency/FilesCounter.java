@@ -10,14 +10,9 @@ public interface FilesCounter {
 
     Map<String, Integer> getFiles();
 
-    default Map<String, Integer> getTop10Files(Map<String, Integer> files) {
-        List<Map.Entry<String, Integer>> entries = new LinkedList(files.entrySet());
-        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
-
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o1.getValue().compareTo(o2.getValue());
-            }
-        });
+    default Map<String, Integer> getTop10Files() {
+        List<Map.Entry<String, Integer>> entries = new LinkedList(getFiles().entrySet());
+        Collections.sort(entries, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
 
         Deque deque = (Deque) entries;
 

@@ -14,22 +14,22 @@ public class Main {
         if (args != null && args.length == 1) {
             root = new File(args[0]);
         }
-
+        FilesCounter fc;
 
         System.out.println("\n=================== SINGLE THREAD ==========================");
-        FilesCounter fc = new FilesCounterSingleTread(root);
+        fc = new FilesCounterSingleTread(root);
         execute(fc);
 
-        System.out.println("\n=================== MULTI THREADS FORK-JOIN==========================");
+        System.out.println("\n=================== MULTI THREADS FORK-JOIN ==========================");
         fc = new FilesCounterForkJoinMultiThreads(root);
         execute(fc);
 
-        System.out.println("\n=================== MULTI THREADS FORK-JOIN 2 ==========================");
-        fc = new FilesCounterForkJoinMultiThreadsNew(root);
+        System.out.println("\n=================== MULTI  THREADS EXECUTORS ==========================");
+        fc = new FilesCounterExecutorsMultiThreads(root);
         execute(fc);
 
-        System.out.println("\n=================== MULTI  THREADS EXECUTORS==========================");
-        fc = new FilesCounterExecutorsMultiThreads(root);
+        System.out.println("\n=================== MULTI  THREADS EXECUTORS Without futures (not my idea :) ) ==========================");
+        fc = new FilesCounterExecutorsMultiThreadsWithoutFutures(root);
         execute(fc);
     }
 
@@ -39,7 +39,7 @@ public class Main {
         System.out.println("Searching files in milliseconds:" + (System.currentTimeMillis() - startTime));
 
         System.out.println(String.format("Number of files in directory %s is %s", root.getAbsoluteFile(), fc.getFiles().size()));
-        Iterator i = fc.getTop10Files(fc.getFiles()).entrySet().iterator();
+        Iterator i = fc.getTop10Files().entrySet().iterator();
         while (i.hasNext()) {
             System.out.println(i.next());
         }
